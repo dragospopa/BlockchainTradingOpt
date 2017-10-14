@@ -1,7 +1,4 @@
 FROM python:2
-
-ADD . /
-
-CMD [ "python", "./script.py" ]
-
-
+COPY . /
+EXPOSE 4000
+CMD ["python script.py"]
