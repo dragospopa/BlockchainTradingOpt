@@ -7,6 +7,6 @@ COPY . /app
 
 EXPOSE 8000
 
-WORKDIR /app
+WORKDIR app
 
 CMD ["python", "script.py"]
