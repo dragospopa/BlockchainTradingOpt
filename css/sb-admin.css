@@ -56,20 +56,12 @@ body.fixed-nav {
 
 #txt{
   color: mediumseagreen;
-  font-size: 120px;
-  background-color: black;
-  text-align: center;
-  margin:10px;
-  font-style: italic;
-}
-#txt2{
-  color: mediumseagreen;
   font-size: 80px;
-  background-color: black;
   text-align: center;
-  margin:10px;
+  margin:5px;
   font-style: italic;
 }
+
 
 
 #mainNav .navbar-collapse {
