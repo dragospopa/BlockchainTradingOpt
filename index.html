@@ -16,6 +16,7 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> 
   <script>
 function startTime() {
     var today = new Date();
@@ -282,7 +283,16 @@ function readSingleFile(evt) {
         </div>
         <div class="card-footer small text-muted">Updated today at 15:24</div>
 </div>
-   
+       <center> 
+        <div  id="prediction-box" style="width:300px; font-family: 'Oxygen', sans-serif; border:1px solid rgba(0,0,0,.1); border-radius:4px; padding:20px; margin-bottom:50px">
+          <span align="center" id="btc-prediction" style="font-size:22px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; letter-spacing: 3px; font-weight:200">PREDICTED BTC RATE</span>
+          <div id="prediction-box-value" style="width:100%">
+            <hr>
+            <p style="padding: 5px; font-size:21px"><b>56789</b>.91</p>
+          </div>
+        </div>
+       </center>
+
        <div class="mb-1 mt-4">
             <i class="fa fa-newspaper-o"></i> News Feed</div>
           <hr class="mt-2">
