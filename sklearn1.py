@@ -10,7 +10,7 @@ import nltk
 from datetime import datetime
 from nltk.classify import NaiveBayesClassifier
 import time
-import random.randrange
+import random
 #crawler
 
 def format_sentence(sent):
