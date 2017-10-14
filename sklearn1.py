@@ -9,7 +9,7 @@ import nltk
 from datetime import datetime
 from nltk.classify import NaiveBayesClassifier
 import time
-
+import random.randrange
 #crawler
 
 def format_sentence(sent):
@@ -91,8 +91,6 @@ except:
 	print "meh some err"
 
 
-
-
 #neural network
 
 dataTrain = pd.read_csv("data/estimated-transaction-volume.csv", names=['x1','x2','x3','x4','x5','x6','y'])
@@ -108,24 +106,39 @@ ols = linear_model.LinearRegression()
 model = ols.fit(x_train, y_train)
 
 scaler = StandardScaler()
-scaler.fit(x_train)
-StandardScaler(copy=True, with_mean=True, with_std=True)
-x_train = scaler.transform(x_train)
-x_test = scaler.transform(x_test)
-mlp = MLPRegressor(solver="sgd",activation="identity",hidden_layer_sizes=(40),max_iter=100000, learning_rate_init=0.00001, learning_rate="invscaling", power_t=-0.02)
-mlp.fit(x_train,y_train)
-predictions = mlp.predict(x_test)
-'''plt.plot(dataTrain[['x4']])
-plt.plot(predictions)
-plt.ylabel('Bitcoin')
-plt.xlabel('Time')
-plt.show()'''
 
-predicted_value = predictions[0]
+while (True):
+	scaler.fit(x_train)
+	StandardScaler(copy=True, with_mean=True, with_std=True)
+	x_train = scaler.transform(x_train)
+	x_test = scaler.transform(x_test)
+	mlp = MLPRegressor(solver="sgd",activation="identity",hidden_layer_sizes=(40),max_iter=100000, learning_rate_init=0.00001, learning_rate="invscaling", power_t=-0.02)
+	mlp.fit(x_train,y_train)
+	predictions = mlp.predict(x_test)
+	'''plt.plot(dataTrain[['x4']])
+	plt.plot(predictions)
+	plt.ylabel('Bitcoin')
+	plt.xlabel('Time')
+	plt.show()'''
 
-print predicted_value
-print articles[-1].title
-print articles[-1].url
-print articles[-2].title
-print articles[-2].url
-print news_paper.brand
+	predicted_value = predictions[0]
+
+	rand1 = -1 - random.randrange(0,3,1)
+	rand2 = rand1
+	while (rand2==rand1):
+		rand2 = -1 - random.randrange(0,3,1)
+
+	print predicted_value
+	print articles[rand1].title
+	print articles[rand1].url
+	print articles[rand2].title
+	print articles[rand2].url
+	print news_paper.brand
+
+    print("Running script in daemon mode")
+    
+    file = open("js/sb-admin-charts.min.js","r") 
+
+    target.write(data)
+    target.close()
+    time.sleep(5)
