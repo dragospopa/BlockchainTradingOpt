@@ -1,3 +1,4 @@
+
 import pandas as pd
 from sklearn import linear_model
 import matplotlib.pyplot as plt
@@ -129,16 +130,17 @@ while (True):
 		rand2 = -1 - random.randrange(0,3,1)
 
 	print predicted_value
+
 	print articles[rand1].title
 	print articles[rand1].url
 	print articles[rand2].title
 	print articles[rand2].url
 	print news_paper.brand
 
-    print("Running script in daemon mode")
+        print("Running script in daemon mode")
     
-    file = open("js/sb-admin-charts.min.js","r") 
+        target = open("data","w") 
 
-    target.write(data)
-    target.close()
-    time.sleep(5)
+        target.write(str(predicted_value))
+        target.close()
+        time.sleep(5)
