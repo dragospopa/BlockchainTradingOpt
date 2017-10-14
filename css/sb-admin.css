@@ -61,6 +61,13 @@ body.fixed-nav {
   margin:5px;
   font-style: italic;
 }
+#clock-seconds{
+  color: mediumseagreen;
+  font-size: 50px;
+  text-align: center;
+  margin:5px;
+  font-style: italic;
+}
 
 
 
