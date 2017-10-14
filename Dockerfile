@@ -1,7 +1,7 @@
 FROM python:3
 
 
-RUN mkdir /app
+RUN mkdir app
 
 COPY . /app
 
