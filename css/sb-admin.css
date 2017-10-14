@@ -227,9 +227,11 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
   -ms-filter: 'FlipH'; }
 
 .content-wrapper {
+  margin-left: 250px;
   overflow-x: hidden;
   background: white; }
   @media (min-width: 992px) {
+    margin-left: 250px;
      }
 
 #sidenavToggler i {
