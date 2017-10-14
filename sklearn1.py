@@ -10,7 +10,7 @@ import nltk
 from datetime import datetime
 from nltk.classify import NaiveBayesClassifier
 import time
-import random.randrange
+import random
 #crawler
 
 def format_sentence(sent):
@@ -126,21 +126,19 @@ while (True):
 
 	rand1 = -1 - random.randrange(0,3,1)
 	rand2 = rand1
-	while (rand2==rand1):
-		rand2 = -1 - random.randrange(0,3,1)
 
 	print predicted_value
 
 	print articles[rand1].title
 	print articles[rand1].url
-	print articles[rand2].title
-	print articles[rand2].url
 	print news_paper.brand
 
-        print("Running script in daemon mode")
+	html = part1+ str(predicted_value) + part2 + news_paper.brand + part3+ articles[rand1].title + part4 + articles[rand1].url + end
+    print("Running script in daemon mode")
     
-        target = open("data","w") 
+    target = open("data","w") 
 
-        target.write(str(predicted_value))
-        target.close()
-        time.sleep(5)
+    target.write(str(predicted_value))
+    target.close()
+    time.sleep(5)
+
