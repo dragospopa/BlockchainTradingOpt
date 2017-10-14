@@ -53,6 +53,24 @@ body.fixed-nav {
 .z-1 {
   z-index: 1; }
 
+
+#txt{
+  color: mediumseagreen;
+  font-size: 80px;
+  text-align: center;
+  margin:5px;
+  font-style: italic;
+}
+#clock-seconds{
+  color: mediumseagreen;
+  font-size: 50px;
+  text-align: center;
+  margin:5px;
+  font-style: italic;
+}
+
+
+
 #mainNav .navbar-collapse {
   overflow: auto;
   max-height: 75vh; }
