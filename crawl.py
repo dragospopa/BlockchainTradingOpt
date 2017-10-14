@@ -40,20 +40,19 @@ def bitcoin_related(article_title):
 	article_title = article_title.lower()
 	return "blockchain" in article_title or "bitcoin" in article_title or "cryptocurrenc" in article_title or "ico" in article_title
 
-bloomberg_paper = newspaper.build('https://www.coindesk.com/')
+bloomberg_paper = newspaper.build('http://www.coindesk.com/')
 print(bloomberg_paper.size())
 index = 0
 ArticleTuple = collections.namedtuple('ArticleTuple', 'publish_date publish_date_string title text')
 articles = []
 
 for i in range(len(bloomberg_paper.articles)):
-	if i<12: 
-		article = bloomberg_paper.articles[i]
-		article.download()
-		article.parse()
-		if bitcoin_related(article.title) and article.publish_date is not None:
-			naivePublishDate = article.publish_date.replace(tzinfo=None)
-			articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text))
+    	article = bloomberg_paper.articles[i]
+    	article.download()
+    	article.parse()
+    	if article.publish_date is not None:
+    		naivePublishDate = article.publish_date.replace(tzinfo=None)
+    		articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text))
 
 articles.sort(key=lambda x: x.publish_date)
 
