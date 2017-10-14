@@ -23,33 +23,37 @@ def sentiment(article):
 	negative_title_score = 0
 
 	for word in good_words:
-		if word in article_text:
+		if word in article_text.lower():
 			positive_text_score += 1
-		if word in article_title:
+		if word in article_title.lower():
 			positive_title_score += 1
 
 	for word in bad_words:
-		if word in article_text:
+		if word in article_text.lower():
 			negative_text_score += 1
-		if word in article_title:
+		if word in article_title.lower():
 			negative_title_score += 1
 
 	return (positive_title_score - negative_title_score);
 
+def bitcoin_related(article_title):
+	article_title = article_title.lower()
+	return "blockchain" in article_title or "bitcoin" in article_title or "cryptocurrenc" in article_title or "ico" in article_title
 
-bloomberg_paper = newspaper.build('http://www.marketwatch.com/investing')
+bloomberg_paper = newspaper.build('https://www.coindesk.com/')
 print(bloomberg_paper.size())
 index = 0
 ArticleTuple = collections.namedtuple('ArticleTuple', 'publish_date publish_date_string title text')
 articles = []
 
 for i in range(len(bloomberg_paper.articles)):
-	article = bloomberg_paper.articles[i]
-	article.download()
-	article.parse()
-	if article.publish_date is not None:
-		naivePublishDate = article.publish_date.replace(tzinfo=None)
-		articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text))
+	if i<12: 
+		article = bloomberg_paper.articles[i]
+		article.download()
+		article.parse()
+		if bitcoin_related(article.title) and article.publish_date is not None:
+			naivePublishDate = article.publish_date.replace(tzinfo=None)
+			articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text))
 
 articles.sort(key=lambda x: x.publish_date)
 
