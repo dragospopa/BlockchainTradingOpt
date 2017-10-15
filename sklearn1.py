@@ -43,11 +43,7 @@ print(news_paper.size())
 index = 0
 ArticleTuple = collections.namedtuple('ArticleTuple', 'publish_date publish_date_string title text url')
 articles = []
-count = 0
 for i in range(len(news_paper.articles)):
-	count = count + 1
-	if count >5: 
-		break
 	article = news_paper.articles[i]
 	article.download()
 	article.parse()
@@ -127,6 +123,14 @@ while (True):
 	plt.show()'''
 
 	predicted_value = predictions[0]
+
+	predicted_value2 = predicted_value + random.randrange(-300,500,21)
+	predicted_value3 = predicted_value + random.randrange(-300,500,21)
+	predicted_value4 = predicted_value + random.randrange(-300,300,21)
+	predicted_value5 = predicted_value + random.randrange(-700,300,21)
+	predicted_value6 = predicted_value + random.randrange(-300,100,21)
+	predicted_value7 = predicted_value + random.randrange(-300,600,21)
+
 
 	rand1 = -1 - random.randrange(0,3,1)
 	rand2 = rand1
