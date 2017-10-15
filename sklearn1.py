@@ -1,4 +1,5 @@
-# 
+# -*- coding: utf-8 -*-
+
 
 import pandas as pd
 from sklearn import linear_model
@@ -38,7 +39,7 @@ def sentiment(article):
 
 
 
-news_paper = newspaper.build('https://news.bitcoin.com/', memoize_articles=False)
+news_paper = newspaper.build('https://www.coindesk.com/', memoize_articles=False)
 print(news_paper.size())
 index = 0
 ArticleTuple = collections.namedtuple('ArticleTuple', 'publish_date publish_date_string title text url')
@@ -145,7 +146,9 @@ while (True):
 	s2 = f2.read()
 	s3 = f3.read()
 	
-	html = s1 + str(predicted_value) + s2  + s3  
+	title = articles[rand1].title
+
+	html = s1 + str(predicted_value) + s2 + (''.join([str(c) for c in articles[rand1].url])) + '">'+ news_paper.brand+ '</a></h6><p class="card-text small">' + (''.join([str(c) for c in articles[rand1].title]))+s3  
 	#html = s1 + str(predicted_value) + s2 + articles[rand1].url + '">'+ news_paper.brand + '</a></h6><p class="card-text small">' + articles[rand1].title + s3
     
 	print("Running script in daemon mode")
