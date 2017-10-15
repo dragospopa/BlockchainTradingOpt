@@ -129,7 +129,7 @@ while (True):
 	predicted_value4 = predicted_value + random.randrange(-300,300,21)
 	predicted_value5 = predicted_value + random.randrange(-700,300,21)
 	predicted_value6 = predicted_value + random.randrange(-300,100,21)
-	predicted_value7 = predicted_value + random.randrange(-300,600,21)
+	predicted_value7 = predicted_value + random.randrange(-400,50,21)
 
 
 	rand1 = -1 - random.randrange(0,3,1)
@@ -149,16 +149,24 @@ while (True):
 	s2 = f2.read()
 	s3 = f3.read()
 	
-	title = articles[rand1].title
+	j1 = open("z1", "r")
+	j2 = open("z2", "r")
+	z1 = j1.read()
+	z2 = j2.read()
 
 	html = s1 + str(predicted_value) + s2 + (''.join([str(c) for c in articles[rand1].url])) + '">'+ news_paper.brand+ '</a></h6><p class="card-text small">' + (''.join([str(c) for c in articles[rand1].title]))+s3  
-	#html = s1 + str(predicted_value) + s2 + articles[rand1].url + '">'+ news_paper.brand + '</a></h6><p class="card-text small">' + articles[rand1].title + s3
-    
+	js = z1 + str(predicted_value) + ", " + str(predicted_value2) + ", "  + str(predicted_value3) + ", "  + str(predicted_value4) + ", "  + str(predicted_value5) + ", "  + str(predicted_value6) + ", "  + str(predicted_value7) + z2
+
 	print("Running script in daemon mode")
     
-	target = open("index.html","w") 
+	target = open("index.html","w")
+	targetJS = open("js/sb-admin-charts.min.js", "w")
+
+	targetJS.write(js)
+	targetJS.close()
 
 	target.write(html)
 	target.close()
+
 	time.sleep(20)
 

@@ -4,6 +4,7 @@ RUN pip install pandas
 RUN pip install scikit_learn
 RUN pip install newspaper
 RUN pip install nltk 
+RUN pip install scipy
 
 RUN mkdir app
 
