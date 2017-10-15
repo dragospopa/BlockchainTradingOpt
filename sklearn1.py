@@ -1,3 +1,4 @@
+# 
 
 import pandas as pd
 from sklearn import linear_model
@@ -37,24 +38,27 @@ def sentiment(article):
 
 
 
-news_paper = newspaper.build('https://www.coindesk.com/', memoize_articles=False)
+news_paper = newspaper.build('https://news.bitcoin.com/', memoize_articles=False)
 print(news_paper.size())
 index = 0
 ArticleTuple = collections.namedtuple('ArticleTuple', 'publish_date publish_date_string title text url')
 articles = []
-
+count = 0
 for i in range(len(news_paper.articles)):
-    	article = news_paper.articles[i]
-    	article.download()
-    	article.parse()
-    	print article.title
-    	print sentiment(article.title)
-    	if article.publish_date is not None:
-			try:
-				naivePublishDate = article.publish_date.replace(tzinfo=None)
-				articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text, article.url))
-			except:
-				print "meh some err"	
+	count = count + 1
+	if count >5: 
+		break
+	article = news_paper.articles[i]
+	article.download()
+	article.parse()
+	print article.title
+	print sentiment(article.title)
+	if article.publish_date is not None:
+		try:
+			naivePublishDate = article.publish_date.replace(tzinfo=None)
+			articles.append(ArticleTuple(naivePublishDate, article.publish_date.isoformat(), article.title, article.text, article.url))
+		except:
+			print "meh some err"	
 
 articles.sort(key=lambda x: x.publish_date)
 
@@ -133,12 +137,22 @@ while (True):
 	print articles[rand1].url
 	print news_paper.brand
 
-	html = part1+ str(predicted_value) + part2 + news_paper.brand + part3+ articles[rand1].title + part4 + articles[rand1].url + end
-    print("Running script in daemon mode")
-    
-    target = open("data","w") 
 
-    target.write(str(predicted_value))
-    target.close()
-    time.sleep(5)
+	f1 = open("f1","r") 
+	f2 = open("f2","r") 
+	f3 = open("f3","r") 
+	s1 = f1.read()
+	s2 = f2.read()
+	s3 = f3.read()
+	
+	html = s1 + str(predicted_value) + s2  + s3  
+	#html = s1 + str(predicted_value) + s2 + articles[rand1].url + '">'+ news_paper.brand + '</a></h6><p class="card-text small">' + articles[rand1].title + s3
+    
+	print("Running script in daemon mode")
+    
+	target = open("index.html","w") 
+
+	target.write(html)
+	target.close()
+	time.sleep(20)
 
