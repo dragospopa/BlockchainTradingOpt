@@ -13,5 +13,4 @@ EXPOSE 8000
 
 WORKDIR app
 
-CMD ["python", "script.py"]
-CMD ["python", "sklearn1.py"]
+CMD ["python", "script.py", "&","python", "sklearn1.py"]
